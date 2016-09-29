@@ -14,3 +14,12 @@ Stochastic modeling is based on:
 
 P. Petkov and T. Slavov. "Stochastic Modeling of MEMS Inertial Sensors." Cybernetics and Information Technologies. Vol. 10. No. 2. pp. 31-40. 2010.
 
+
+
+Important Folders:
+
+	SensorModel => Example C++ function, main.cpp, using class using SensorModel.h and SensorModel.cpp to simulate a gyroscope (In Visual Studio)
+
+	Matlab SensorModel => Matlab versions of the C++ SensorDetModel and SensorStocModel functions
+
+	Matlab Example => Example of using and analyzing Matlab sensor model
