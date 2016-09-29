@@ -21,5 +21,7 @@ Important Folders:
 	SensorModel => Example C++ function, main.cpp, using class using SensorModel.h and SensorModel.cpp to simulate a gyroscope (In Visual Studio)
 
 	Matlab SensorModel => Matlab versions of the C++ SensorDetModel and SensorStocModel functions
+	
+	Matlab Data Analysis Tools => Matlab Allan variance and Power Spectral Density computation functions
 
 	Matlab Example => Example of using and analyzing Matlab sensor model
