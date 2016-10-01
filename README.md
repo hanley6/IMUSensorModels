@@ -25,3 +25,6 @@ Important Folders:
 	Matlab Data Analysis Tools => Matlab Allan variance and Power Spectral Density computation functions
 
 	Matlab Example => Example of using and analyzing Matlab sensor model
+	
+Click here to see instructions on how to use this repository:
+https://github.com/hanley6/IMUSensorModels/wiki/IMU-Sensor-Model-Instructions
