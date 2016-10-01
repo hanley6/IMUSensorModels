@@ -74,7 +74,7 @@ int main()
 	gyro_x.freq = 98.4163;
 	gyro_x.rrw = 0.0;
 	gyro_x.sig_meas = 0.009626800281770;
-	gyro_x.sig_w = 4.500000000000000;
+	gyro_x.sig_w = 10.0;
 	gyro_x.T = 1.608951674938202e+03;
 	gyro_x.S = 0.0;
 	gyro_x.Bf = 0.0;
