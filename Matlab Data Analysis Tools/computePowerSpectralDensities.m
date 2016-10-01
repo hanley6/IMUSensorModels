@@ -1,4 +1,4 @@
-function [ Pxx ] = computePowerSpectralDensities( meas,fs )
+function [ Pxx,f ] = computePowerSpectralDensities( meas,fs )
 %COMPUTEPOWERSPECTRALDENSITIES Computes the one-sided power spectral
 %density of set of measurements
 %   Inputs:
@@ -7,7 +7,7 @@ function [ Pxx ] = computePowerSpectralDensities( meas,fs )
 %   Outputs:
 %           Pxx = power spectra of measurements
 
-Pxx = pwelch(meas,[],[],[],fs,'onesided');
+[Pxx,f] = pwelch(meas,[],[],[],fs,'onesided');
 
 end
 
