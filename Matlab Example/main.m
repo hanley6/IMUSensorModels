@@ -23,7 +23,7 @@ fs = 1/median(diff(time));
 [T,sigma] = allan(meas,fs,pts);
 
 % Compute PSD from Data
-Pxx = computePowerSpectralDensities( meas,fs );
+[Pxx,f] = computePowerSpectralDensities( meas,fs );
 
 %----------------------------- Plot Results ------------------------------%
 % Allan Variance
@@ -37,7 +37,7 @@ grid on;
 
 % Power Spectral Densities
 subplot(2,1,2)
-loglog(Pxx)
+loglog(f,Pxx)
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('PSD Plot')
@@ -126,7 +126,7 @@ sig_gyro_noise = sqrt(var(meas));
 % Choose standard deviation used in rate random walk contribution so that 
 % low frequency of RRW PSD matches low frequency of the PSD from dataset of
 % sensor data
-sig_w = 4.5;
+sig_w = 10;
 
 % Display Parameter Results
 display(sprintf('B: %f',B));
@@ -169,10 +169,10 @@ end
 [T_val,sigma_val] = allan(sim_meas,fs,100);
 
 % Compute PSD of Simulation Data
-Pxx_val = computePowerSpectralDensities( sim_meas,fs );
+[Pxx_val,f_val] = computePowerSpectralDensities( sim_meas,fs );
 
 % Compute PSD of Rate Random Walk Data
-Pxx_rrw = computePowerSpectralDensities( rrw_save,fs );
+[Pxx_rrw,f_rrw] = computePowerSpectralDensities( rrw_save,fs );
 
 % Compare Data Allan Deviation and Simulation Allan Deviation
 figure(4)
@@ -185,10 +185,7 @@ grid on;
 
 % Compare Data Power Spectral Density and Simulation Power Spectral Density
 figure(5)
-loglog(Pxx)
-hold on;
-loglog(Pxx_val,'r')
-hold off;
+loglog(f,Pxx,f_val,Pxx_val,'r')
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('PSD Plot Comparison')
@@ -206,10 +203,7 @@ title('Signal Output Comparison')
 
 % Compare Data PSD with Rate Random Walk Power Spectral Density
 figure(7)
-loglog(Pxx)
-hold on;
-loglog(Pxx_rrw,'r')
-hold off;
+loglog(f,Pxx,f_rrw,Pxx_rrw,'r')
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('PSD Plot RRW and Data')
