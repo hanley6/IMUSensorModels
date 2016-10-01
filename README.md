@@ -26,5 +26,5 @@ Important Folders:
 
 	Matlab Example => Example of using and analyzing Matlab sensor model
 	
-Click here to see instructions on how to use this repository:
-https://github.com/hanley6/IMUSensorModels/wiki/IMU-Sensor-Model-Instructions
+Click [here](https://github.com/hanley6/IMUSensorModels/wiki/IMU-Sensor-Model-Instructions) to see instructions on how to use this repository.
+
