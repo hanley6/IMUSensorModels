@@ -14,6 +14,8 @@ Stochastic modeling is based on:
 
 P. Petkov and T. Slavov. "Stochastic Modeling of MEMS Inertial Sensors." Cybernetics and Information Technologies. Vol. 10. No. 2. pp. 31-40. 2010.
 
+and Kalibr version in Matlab is based on IMU model presented in the ETH ASL Kalibr package (https://github.com/ethz-asl/kalibr/wiki)
+
 
 
 Important Folders:
