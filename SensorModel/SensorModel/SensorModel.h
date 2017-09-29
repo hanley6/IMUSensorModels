@@ -1,6 +1,13 @@
 class SensorModel
 {
 public:
+	// Default Constructor
+	SensorModel();
+
+	// Parameterized Constructor
+	// Choose anything besides 1 for using Kalibr
+	SensorModel(int Kalibr);
+
 	/*----- Parameters that describe errors (both stochastic and deterministic of an IMU sensor) -----*/
 	// Stochastic Parameters
 	double B;		 // Mean Square Value of Bias Instability
@@ -28,6 +35,9 @@ public:
 	// Compute Corrupted Sensor Output
 	void SensorModelOutput(void);
 private:
+	// Choice flag is 1 if using normal IMU model and anything else if using Kalibr model.
+	int Choice;
+
 	// Corrupted Deterministic Sensor Output
 	double DetSensorOutput;
 
@@ -36,4 +46,7 @@ private:
 
 	// Function that Computes the Sensor Output with Stochastic Error Contributors
 	void SensorStocModel(void);
+
+	// Function that Computes the Sensor Output with Stochastic Error Contributors using Kalibr Model.
+	void SensorStocModel_Kalibr(void);
 };

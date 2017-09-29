@@ -1,5 +1,9 @@
-﻿  SensorModel.cpp
-  main.cpp
+﻿  main.cpp
+  SensorModel.cpp
+c:\users\dave\desktop\imusensormodels-master\tmp\sensormodel\sensormodel\sensormodel.cpp(200): warning C4101: 'sig_eta': unreferenced local variable
+c:\users\dave\desktop\imusensormodels-master\tmp\sensormodel\sensormodel\sensormodel.cpp(201): warning C4101: 'eta': unreferenced local variable
+c:\users\dave\desktop\imusensormodels-master\tmp\sensormodel\sensormodel\sensormodel.cpp(199): warning C4101: 'b_d': unreferenced local variable
+c:\users\dave\desktop\imusensormodels-master\tmp\sensormodel\sensormodel\sensormodel.cpp(198): warning C4101: 'a_d': unreferenced local variable
   Generating Code...
-  SensorModel.vcxproj -> C:\Users\Dave\Desktop\Research\IMUSensorModels\SensorModel\Debug\SensorModel.exe
-  SensorModel.vcxproj -> C:\Users\Dave\Desktop\Research\IMUSensorModels\SensorModel\Debug\SensorModel.pdb (Full PDB)
+  SensorModel.vcxproj -> C:\Users\Dave\Desktop\IMUSensorModels-master\tmp\SensorModel\Debug\SensorModel.exe
+  SensorModel.vcxproj -> C:\Users\Dave\Desktop\IMUSensorModels-master\tmp\SensorModel\Debug\SensorModel.pdb (Partial PDB)

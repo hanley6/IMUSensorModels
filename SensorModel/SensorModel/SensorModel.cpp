@@ -93,6 +93,20 @@ double randn(double mu, double sigma)
 }
 /*---------------------- End randn -----------------------*/
 
+/*----------------- Default Constructor ------------------*/
+SensorModel::SensorModel()
+{
+	Choice = 1;
+}
+/*--------------- End Default Constructor ----------------*/
+
+/*--------------- Parameterized Constructor --------------*/
+SensorModel::SensorModel(int Kalibr)
+{
+	Choice = Kalibr;
+}
+/*------------- End Parameterized Constructor ------------*/
+
 /*-------------------- SensorDetModel --------------------*/
 // Outputs corrupted sensor measurement due to deterministic errors. This 
 // approach ignore cross coupling effects, g-sensitive bias, and vibro-pendulous 
@@ -162,6 +176,54 @@ void SensorModel::SensorStocModel(void)
 }
 /*------------------ End SensorStocModel -----------------*/
 
+/*----------------- SensorStocModel_Kalibr ---------------*/
+// Outputs a sensor measurement corrupted by a noise model. 
+// This model is a reduced version of the SensorStocModel used in 
+// the Kalibr toolbox (http://github.com/ethz-asl/kalibr).
+// This models only the stochastic component of the sensor. Deterministic
+// errors, such as scale and turn - on bias, should be applied to the
+// sensordata input prior to using this function.The following paper is used
+// as a reference for this function:
+//  Paul Furgale, Joern Rehder, Roland Siegwart (2013). Unified Temporal and 
+//  Spatial Calibration for Multi-Sensor Systems. In Proceedings of the 
+//  IEEE/RSJ International Conference on Intelligent Robots and Systems 
+//  (IROS), Tokyo, Japan.
+void SensorModel::SensorStocModel_Kalibr(void)
+{
+	/*--------------- Initializations ---------------*/
+	double sensor_noise;
+	double arw;
+	double sig_arw;
+	double dt;
+	double a_d;
+	double b_d;
+	double sig_eta;
+	double eta;
+
+	// Period of sensor measurements
+	dt = 1.0 / freq;
+	/*------------- End Initializations -------------*/
+
+	/*--------------- Rate Random Walk --------------*/
+	rrw = rrw + sqrt(dt)*sig_w*randn(0.0, 1.0);
+	/*------------- End Rate Random Walk ------------*/
+
+	/*-------------- Angle Random Walk --------------*/
+	// Compute the standard deviation of the angle random walk
+	sig_arw = sig_meas/sqrt(dt);
+	// Find angle random walk contribution
+	arw = sig_arw*randn(0.0, 1.0);
+	/*------------ End Angle Random Walk ------------*/
+
+	/*----------- Compute Sensor Output -------------*/
+	// Compute Total Sensor Noise Contribution
+	sensor_noise = arw + rrw;
+	// Compute Total Sensor Measurement
+	SensorOutput = DetSensorOutput + sensor_noise;
+	/*--------- End Compute Sensor Output -----------*/
+}
+/*--------------- End SensorStocModel_Kalibr -------------*/
+
 /*------------------- SensorModelOutput ------------------*/
 // Outputs total corrupted sensor measurement. First deterministic errors are
 // applied. Subsequently, stochastic errors are applied. This is a public 
@@ -176,7 +238,14 @@ void SensorModel::SensorModelOutput(void)
 	SensorModel::SensorDetModel();
 
 	// Corrupt sensor measurement with stochastic errors
-	SensorModel::SensorStocModel();
+	if (Choice == 1)
+	{
+		SensorModel::SensorStocModel();
+	}
+	else
+	{
+		SensorModel::SensorStocModel_Kalibr();
+	}
 }
 /*----------------- End SensorModelOutput ----------------*/
 /*-----------------------------------------------------------------------------*/
