@@ -248,6 +248,111 @@ void SensorModel::SensorModelOutput(void)
 	}
 }
 /*----------------- End SensorModelOutput ----------------*/
+
+/*-------------------- Set value of B --------------------*/
+// Set the mean square value of bias instability. 
+void SensorModel::SetB(double B_input)
+{
+	B = B_input;
+}
+/*------------------ End Set value of B ------------------*/
+
+/*-------------------- Set value of K --------------------*/
+// Set the mean square value of rate random walk 
+void SensorModel::SetK(double K_input)
+{
+	K = K_input;
+}
+/*------------------ End Set value of K ------------------*/
+
+/*-------------------- Set value of T --------------------*/
+// Set the time window at minimum of Allan variance 
+void SensorModel::SetT(double T_input)
+{
+	T = T_input;
+}
+/*------------------ End Set value of T ------------------*/
+
+/*------------------- Set value of freq ------------------*/
+// Set the frequency of sensor measurements 
+void SensorModel::Setfreq(double freq_input)
+{
+	freq = freq_input;
+}
+/*----------------- End Set value of freq ----------------*/
+
+/*----------------- Set value of sig_meas ----------------*/
+// Set the standard deviation of total sensor measurement (assuming error of mean zero)
+void SensorModel::Setsig_meas(double sig_meas_input)
+{
+	sig_meas = sig_meas_input;
+}
+/*--------------- End Set value of sig_meas --------------*/
+
+/*------------------ Set value of sig_w ------------------*/
+// Set the standard deviation used in rate random walk contribution so that
+// low frequency of RRW PSD matches low frequency of the PSD from dataset of sensor data
+void SensorModel::Setsig_w(double sig_w_input)
+{
+	sig_w = sig_w_input;
+}
+/*---------------- End Set value of sig_w ----------------*/
+
+/*------------------- Set value of bias ------------------*/
+// Set the current value of bias instability contribution
+void SensorModel::Setbias(double bias_input)
+{
+	bias = bias_input;
+}
+/*---------------- End Set value of bias -----------------*/
+
+/*------------------- Set value of rrw -------------------*/
+// Set the current value of rate random walk contribution
+void SensorModel::Setrrw(double rrw_input)
+{
+	rrw = rrw_input;
+}
+/*----------------- End Set value of rrw -----------------*/
+
+/*-------------------- Set value of S --------------------*/
+// Set the scale factor error. 
+void SensorModel::SetS(double S_input)
+{
+	S = S_input;
+}
+/*------------------ End Set value of S ------------------*/
+
+/*-------------------- Set value of Bf -------------------*/
+// Set the measurement bias
+void SensorModel::SetBf(double Bf_input)
+{
+	Bf = Bf_input;
+}
+/*------------------ End Set value of Bf -----------------*/
+
+/*--------- Set value of true sensor measurement ---------*/
+// Set the true sensor value that will be corrupted by stochastic errors and deterministic errors
+void SensorModel::SetSensorMeasTrue(double SensorMeasTrue_input)
+{
+	SensorMeasTrue = SensorMeasTrue_input;
+}
+/*------- End Set value of true sensor measurement -------*/
+
+/*------------------- Get value of freq ------------------*/
+// Get the frequency of sensor measurements 
+double SensorModel::Getfreq(void)
+{
+	return freq;
+}
+/*----------------- End Get value of freq ----------------*/
+
+/*------------- Get Corrupted Sensor Output --------------*/
+// Get the corrupted sensor output value
+double SensorModel::GetSensorOutput(void)
+{
+	return SensorOutput;
+}
+/*----------- End Get Corrupted Sensor Output ------------*/
 /*-----------------------------------------------------------------------------*/
 /*------------------------------ End Helpers ----------------------------------*/
 /*-----------------------------------------------------------------------------*/

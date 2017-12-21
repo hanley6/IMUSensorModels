@@ -68,16 +68,16 @@ int main()
 	SensorModel gyro_x;
 
 	// Set sensor parameters
-	gyro_x.B = 4.889237695747431e-05;
-	gyro_x.K = 1.309017731704734e-06;
-	gyro_x.bias = 0.0;
-	gyro_x.freq = 98.4163;
-	gyro_x.rrw = 0.0;
-	gyro_x.sig_meas = 0.009626800281770;
-	gyro_x.sig_w = 10.0;
-	gyro_x.T = 1.608951674938202e+03;
-	gyro_x.S = 0.0;
-	gyro_x.Bf = 0.0;
+	gyro_x.SetB(4.889237695747431e-05);
+	gyro_x.SetK(1.309017731704734e-06);	
+	gyro_x.Setbias(0.0);
+	gyro_x.Setfreq(98.4163);
+	gyro_x.Setrrw(0.0);
+	gyro_x.Setsig_meas(0.009626800281770);
+	gyro_x.Setsig_w(10.0);
+	gyro_x.SetT(1.608951674938202e+03);
+	gyro_x.SetS(0.0);
+	gyro_x.SetBf(0.0);
 
 	// Output File Initializations
 	outData = fopen("Simulation_Output.txt", "w");
@@ -91,19 +91,19 @@ int main()
 	for (int i = 1; i <= iter_max; i++)
 	{ 
 		// Error-free sensor measurement
-		gyro_x.SensorMeasTrue = 0.0;
+		gyro_x.SetSensorMeasTrue(0.0);
 		// Compute corrupted sensor measuremnt
 		gyro_x.SensorModelOutput();
 		// Print result to file
-		fprintf(outData, "%f\t%f \n",((double)i) / gyro_x.freq - 1.0 / gyro_x.freq,gyro_x.SensorOutput);
+		fprintf(outData, "%f\t%f \n",((double)i) / gyro_x.Getfreq() - 1.0 / gyro_x.Getfreq(),gyro_x.GetSensorOutput());
 		// Print time to console
-		printf("Time: %f seconds\r", ((double) i)/ gyro_x.freq - 1.0/ gyro_x.freq);
+		printf("Time: %f seconds\r", ((double) i)/ gyro_x.Getfreq() - 1.0/ gyro_x.Getfreq());
 	}
 	/*-------------- End Run Simulation -------------*/
 
 	/*------------------- Closings ------------------*/
 	// Closing Console Output
-	printf("Time: %f seconds\n", ((double) iter_max) / gyro_x.freq - 1.0 / gyro_x.freq);
+	printf("Time: %f seconds\n", ((double) iter_max) / gyro_x.Getfreq() - 1.0 / gyro_x.Getfreq());
 	printf("Sensor Model Simulation Complete!\n");
 
 	// Closing File
